@@ -1,0 +1,7 @@
+/node_modules
+/src/test
+.eslintcache
+/docs-build
+/dist
+/cache
+tsconfig.tsbuildinfo

@@ -1,0 +1,16 @@
+{
+    "language": "en",
+    "files": [
+        "**"
+    ],
+    "ignorePaths": [
+        "tsconfig.tsbuildinfo",
+        "cache/**",
+        "dist/**"
+    ],
+    "words": [
+        "ergast",
+        "jolpica",
+        "Joost"
+    ]
+}

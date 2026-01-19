@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "rootDir": "./src",
+        "target": "ES2020",
+        "module": "NodeNext",
+        "declaration": true,
+        "outDir": "./dist",
+        "moduleResolution": "NodeNext",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": false,
+        "isolatedModules": true,
+        "noImplicitOverride": true
+    },
+    "include": ["src"]
+}
