@@ -1,11 +1,5 @@
 /**
  * @see https://github.com/jolpica/jolpica-f1/blob/main/docs/endpoints/status.md
- *
- * @category Enums
- *
- * @since 1.0.1
- *
- * @sortStrategy alphabetical
  */
 export enum StatusType {
     Finished = '1',

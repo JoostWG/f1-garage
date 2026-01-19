@@ -1,11 +1,6 @@
 export type * from './data';
 export type * from './responses';
 
-/**
- * @category Base
- *
- * @since 1.0.1
- */
 export interface Pagination {
     /**
      * Maximum number of results results returned. Defaults to 30. Max is 100
@@ -19,8 +14,6 @@ export interface Pagination {
 
 /**
  * The root object of the json response.
- *
- * @since 1.0.1
  *
  * @see https://github.com/jolpica/jolpica-f1/tree/main/docs#common-response-fields
  */
@@ -51,20 +44,10 @@ export interface MRData {
     total: `${number}`;
 }
 
-/**
- * @category Api responses
- *
- * @since 1.0.1
- */
 export interface SuccessResponse<T = unknown> {
     MRData: MRData & T;
 }
 
-/**
- * @category Api responses
- *
- * @since 1.0.1
- */
 export interface BadRequestResponse {
     detail: string;
 }

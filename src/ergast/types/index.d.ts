@@ -1,3 +1,4 @@
+import type { MapValueToResource, ValueOf } from '../../types/helpers';
 import type {
     CircuitsResponse,
     ConstructorStandingsResponse,
@@ -45,8 +46,6 @@ import type {
 
 export type * from './api';
 export type * from './options';
-
-export type ValueOf<T> = T[keyof T];
 
 export type AnyApiOptions = Partial<
     & SeasonOption
@@ -99,8 +98,4 @@ export interface ResponsesMap {
 
 export type AnyResponse = ValueOf<ResponsesMap>;
 
-type Exact<T, U> = T extends U ? (U extends T ? true : false) : false;
-
-export type ResponseResource<T extends ValueOf<ResponsesMap>> = {
-    [K in keyof ResponsesMap]: Exact<ResponsesMap[K], T> extends true ? K : never;
-}[keyof ResponsesMap];
+export type ResponseResource<T extends ValueOf<ResponsesMap>> = MapValueToResource<ResponsesMap, T>;

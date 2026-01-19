@@ -86,23 +86,27 @@ export default defineConfig(
             '@typescript-eslint/member-ordering': 'warn',
             '@typescript-eslint/no-shadow': 'error',
             '@typescript-eslint/no-unsafe-return': 'error',
-            '@typescript-eslint/naming-convention': [
-                'warn',
-                { selector: ['typeLike'], format: ['PascalCase'] },
-                {
-                    selector: ['enumMember'],
-                    format: ['PascalCase', 'camelCase'],
-                },
-                {
-                    selector: ['typeProperty', 'parameterProperty', 'objectLiteralProperty'],
-                    format: ['PascalCase', 'camelCase', 'snake_case'],
-                },
-                {
-                    selector: ['variableLike', 'method', 'property', 'memberLike'],
-                    format: ['camelCase'],
-                    filter: { regex: '^_$', match: false },
-                },
-            ],
+
+            // TODO
+            '@typescript-eslint/naming-convention': 'off',
+            // '@typescript-eslint/naming-convention': [
+            //     'warn',
+            //     { selector: ['typeLike'], format: ['PascalCase'] },
+            //     {
+            //         selector: ['enumMember'],
+            //         format: ['PascalCase', 'camelCase'],
+            //     },
+            //     {
+            //         selector: ['typeProperty', 'parameterProperty', 'objectLiteralProperty'],
+            //         format: ['PascalCase', 'camelCase', 'snake_case'],
+            //     },
+            //     {
+            //         selector: ['variableLike', 'method', 'property', 'memberLike'],
+            //         format: ['camelCase'],
+            //         filter: { regex: '^_$', match: false },
+            //     },
+            // ],
+
             '@typescript-eslint/explicit-member-accessibility': 'error',
             '@typescript-eslint/prefer-optional-chain': 'warn',
             '@typescript-eslint/no-non-null-assertion': 'error',
