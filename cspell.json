@@ -9,8 +9,11 @@
         "dist/**"
     ],
     "words": [
+        "constructorstandings",
+        "driverstandings",
         "ergast",
         "jolpica",
-        "Joost"
+        "Joost",
+        "pitstops"
     ]
 }
