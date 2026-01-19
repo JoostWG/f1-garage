@@ -12,9 +12,11 @@
         "constructorstandings",
         "driverstandings",
         "ergast",
+        "Halfshaft",
         "jolpica",
         "Joost",
         "millis",
-        "pitstops"
+        "pitstops",
+        "Undertray"
     ]
 }
