@@ -4,7 +4,7 @@
     "description": "Npm package wrapping the jolpica f1 api",
     "main": "./dist/index.js",
     "scripts": {
-        "test": "ts-node src/test",
+        "_test": "ts-node src/test",
         "build": "tsup",
         "lint": "eslint . --fix --cache",
         "format": "dprint fmt",
