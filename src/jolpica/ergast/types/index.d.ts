@@ -1,4 +1,4 @@
-import type { MapValueToResource, ValueOf } from '../../types/helpers';
+import type { MapValueToResource, ValueOf } from '../../../types/helpers';
 import type {
     CircuitsResponse,
     ConstructorStandingsResponse,

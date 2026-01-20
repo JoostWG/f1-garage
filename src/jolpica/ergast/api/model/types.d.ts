@@ -1,4 +1,4 @@
-import type { ValueOf } from '../../../types/helpers';
+import type { ValueOf } from '../../../../types/helpers';
 import type {
     Circuit,
     Driver,

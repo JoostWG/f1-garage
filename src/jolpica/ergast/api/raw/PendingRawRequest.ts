@@ -1,4 +1,4 @@
-import type { MapValueToResource } from '../../../types/helpers';
+import type { MapValueToResource } from '../../../../types/helpers';
 import type { AnyResponse, Pagination, ResponsesMap } from '../../types';
 import { ErgastBasePendingRequest } from '../ErgastBasePendingRequest';
 

@@ -1,4 +1,1 @@
-export * from './ergast';
-export * from './errors';
-export * from './errors';
-export type * from './types';
+export * as jolpica from './jolpica';
