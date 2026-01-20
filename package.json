@@ -3,6 +3,18 @@
     "version": "0.2.0",
     "description": "Npm package wrapping the jolpica f1 api",
     "main": "./dist/index.js",
+    "exports": {
+        "./jolpica": {
+            "types": "./dist/jolpica/index.d.ts",
+            "import": "./dist/jolpica/index.js",
+            "require": "./dist/jolpica/index.js"
+        },
+        "./openf1": {
+            "types": "./dist/openf1/index.d.ts",
+            "import": "./dist/openf1/index.js",
+            "require": "./dist/openf1/index.js"
+        }
+    },
     "scripts": {
         "_test": "ts-node src/test",
         "build": "tsup",
