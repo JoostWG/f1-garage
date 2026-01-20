@@ -9,13 +9,16 @@
         "dist/**"
     ],
     "words": [
+        "colour",
         "constructorstandings",
         "driverstandings",
         "ergast",
         "Halfshaft",
+        "headshot",
         "jolpica",
         "Joost",
         "millis",
+        "openf",
         "pitstops",
         "Undertray"
     ]
