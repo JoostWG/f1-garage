@@ -35,7 +35,7 @@ export interface DriverJSON {
     nationality: string | null;
     number: number | null;
     code: string | null;
-    wikiUrl: string | null;
+    wikipediaUrl: string | null;
 }
 
 export class Driver extends Model {
@@ -70,7 +70,7 @@ export class Driver extends Model {
     /**
      *  URL to wikipedia page
      */
-    public readonly wikiUrl: string | null;
+    public readonly wikipediaUrl: string | null;
 
     public constructor(data: DriverApiData, http: F1Api) {
         super(http);
@@ -82,7 +82,7 @@ export class Driver extends Model {
         this.nationality = data.nationality ?? null;
         this.number = data.permanentNumber !== undefined ? Number(data.permanentNumber) : null;
         this.code = data.code ?? null;
-        this.wikiUrl = data.url ?? null;
+        this.wikipediaUrl = data.url ?? null;
     }
 
     /**
@@ -188,7 +188,7 @@ export class Driver extends Model {
             nationality: this.nationality,
             number: this.number,
             code: this.code,
-            wikiUrl: this.wikiUrl,
+            wikipediaUrl: this.wikipediaUrl,
         };
     }
 

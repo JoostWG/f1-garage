@@ -9,7 +9,7 @@ import { SessionDateTime, type SessionDateTimeJSON } from './SessionDateTime';
 export interface RaceJSON {
     season: number;
     round: number;
-    wikiUrl: string | null;
+    wikipediaUrl: string | null;
     name: string;
     circuit: CircuitJson;
     date: string;
@@ -26,7 +26,7 @@ export interface RaceJSON {
 export class Race extends Model {
     public readonly season: number;
     public readonly round: number;
-    public readonly wikiUrl: string | null;
+    public readonly wikipediaUrl: string | null;
     public readonly name: string;
     public readonly circuit: Circuit;
     public readonly date: string;
@@ -44,7 +44,7 @@ export class Race extends Model {
 
         this.season = Number(data.season);
         this.round = Number(data.round);
-        this.wikiUrl = data.url ?? null;
+        this.wikipediaUrl = data.url ?? null;
         this.name = data.raceName;
         this.circuit = new Circuit(data.Circuit, this.http);
         this.date = data.date;
@@ -115,7 +115,7 @@ export class Race extends Model {
         return {
             season: this.season,
             round: this.round,
-            wikiUrl: this.wikiUrl,
+            wikipediaUrl: this.wikipediaUrl,
             name: this.name,
             circuit: this.circuit.toJSON(),
             date: this.date,

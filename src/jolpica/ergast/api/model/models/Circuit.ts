@@ -6,7 +6,7 @@ import { Model } from './Model';
 export interface CircuitJson {
     id: string;
     name: string;
-    wikiUrl: string;
+    wikipediaUrl: string;
     location: LocationJson;
 }
 
@@ -22,7 +22,7 @@ export class Circuit extends Model {
     /**
      * URL to the wikipedia page about this circuit
      */
-    public readonly wikiUrl: string;
+    public readonly wikipediaUrl: string;
     /**
      * The location of the circuit.
      */
@@ -32,7 +32,7 @@ export class Circuit extends Model {
         super(http);
 
         this.id = data.circuitId;
-        this.wikiUrl = data.url;
+        this.wikipediaUrl = data.url;
         this.name = data.circuitName;
         this.location = new Location(data.Location, this.http);
     }
@@ -41,7 +41,7 @@ export class Circuit extends Model {
         return {
             id: this.id,
             name: this.name,
-            wikiUrl: this.wikiUrl,
+            wikipediaUrl: this.wikipediaUrl,
             location: this.location.toJSON(),
         };
     }
