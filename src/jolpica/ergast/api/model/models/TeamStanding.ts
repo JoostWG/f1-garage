@@ -1,7 +1,17 @@
 import type { ConstructorStandingApiData } from '../../../types';
 import type { F1Api } from '../F1Api';
 import { Model } from './Model';
-import { Team } from './Team';
+import { Team, type TeamJSON } from './Team';
+
+export interface TeamStandingJSON {
+    season: number;
+    round: number;
+    position: string | null;
+    positionText: string;
+    points: number;
+    wins: number;
+    team: TeamJSON;
+}
 
 export class TeamStanding extends Model {
     public readonly season: number;
@@ -27,5 +37,17 @@ export class TeamStanding extends Model {
         this.points = Number(data.points);
         this.wins = Number(data.wins);
         this.team = new Team(data.Constructor, this.http);
+    }
+
+    public override toJSON(): TeamStandingJSON {
+        return {
+            season: this.season,
+            round: this.round,
+            position: this.position,
+            positionText: this.positionText,
+            points: this.points,
+            wins: this.wins,
+            team: this.team.toJSON(),
+        };
     }
 }

@@ -1,7 +1,14 @@
 import type { CircuitApiData } from '../../../types';
 import type { F1Api } from '../F1Api';
-import { Location } from './Location';
+import { Location, type LocationJson } from './Location';
 import { Model } from './Model';
+
+export interface CircuitJson {
+    id: string;
+    name: string;
+    wikiUrl: string;
+    location: LocationJson;
+}
 
 export class Circuit extends Model {
     /**
@@ -28,5 +35,14 @@ export class Circuit extends Model {
         this.wikiUrl = data.url;
         this.name = data.circuitName;
         this.location = new Location(data.Location, this.http);
+    }
+
+    public override toJSON(): CircuitJson {
+        return {
+            id: this.id,
+            name: this.name,
+            wikiUrl: this.wikiUrl,
+            location: this.location.toJSON(),
+        };
     }
 }

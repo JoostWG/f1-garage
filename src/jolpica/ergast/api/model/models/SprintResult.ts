@@ -1,11 +1,26 @@
 import type { RaceApiData, SprintResultApiData } from '../../../types';
 import type { F1Api } from '../F1Api';
-import { Driver } from './Driver';
-import { FastestLap } from './FastestLap';
-import { FinishingTime } from './FinishingTime';
+import { Driver, type DriverJSON } from './Driver';
+import { FastestLap, type FastestLapJSON } from './FastestLap';
+import { FinishingTime, type FinishingTimeJSON } from './FinishingTime';
 import { Model } from './Model';
-import { Race } from './Race';
-import { Team } from './Team';
+import { Race, type RaceJSON } from './Race';
+import { Team, type TeamJSON } from './Team';
+
+export interface SprintResultJSON {
+    number: number;
+    position: string;
+    positionText: string;
+    points: number;
+    driver: DriverJSON;
+    team: TeamJSON | null;
+    grid: number | null;
+    laps: number | null;
+    status: string | null;
+    finishingTime: FinishingTimeJSON | null;
+    fastestLap: FastestLapJSON | null;
+    race: RaceJSON;
+}
 
 export class SprintResult extends Model {
     public readonly number: number;
@@ -47,5 +62,22 @@ export class SprintResult extends Model {
             : null;
 
         this.race = new Race(raceData, this.http);
+    }
+
+    public override toJSON(): SprintResultJSON {
+        return {
+            number: this.number,
+            position: this.position,
+            positionText: this.positionText,
+            points: this.points,
+            driver: this.driver.toJSON(),
+            team: this.team?.toJSON() ?? null,
+            grid: this.grid,
+            laps: this.laps,
+            status: this.status,
+            finishingTime: this.finishingTime?.toJSON() ?? null,
+            fastestLap: this.fastestLap?.toJSON() ?? null,
+            race: this.race.toJSON(),
+        };
     }
 }

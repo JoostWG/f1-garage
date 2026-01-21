@@ -2,6 +2,11 @@ import type { AverageSpeedApiData } from '../../../types';
 import type { F1Api } from '../F1Api';
 import { Model } from './Model';
 
+export interface AverageSpeedJSON {
+    units: string;
+    speed: number;
+}
+
 export class AverageSpeed extends Model {
     /**
      * The units the speed was measured in
@@ -35,5 +40,12 @@ export class AverageSpeed extends Model {
      */
     public get mph(): number {
         return this.kph * 0.621371192;
+    }
+
+    public override toJSON(): AverageSpeedJSON {
+        return {
+            units: this.units,
+            speed: this.speed,
+        };
     }
 }

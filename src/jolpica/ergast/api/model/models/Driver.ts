@@ -27,6 +27,17 @@ import type { SprintResult } from './SprintResult';
 import type { Status } from './Status';
 import type { Team } from './Team';
 
+export interface DriverJSON {
+    id: string;
+    firstName: string;
+    lastName: string;
+    dateOfBirth: string | null;
+    nationality: string | null;
+    number: number | null;
+    code: string | null;
+    wikiUrl: string | null;
+}
+
 export class Driver extends Model {
     /**
      *  Unique ID used by the API
@@ -166,6 +177,19 @@ export class Driver extends Model {
 
     public teams(options?: TeamOptions): PendingRequest<Team[]> {
         return this.http.teams(this.getOptions(options));
+    }
+
+    public override toJSON(): DriverJSON {
+        return {
+            id: this.id,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            dateOfBirth: this.dateOfBirth?.toISOString() ?? null,
+            nationality: this.nationality,
+            number: this.number,
+            code: this.code,
+            wikiUrl: this.wikiUrl,
+        };
     }
 
     protected getOptions<T>(options: T): T & { driver: string } {

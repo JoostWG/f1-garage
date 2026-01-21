@@ -4,4 +4,6 @@ export abstract class Model {
     public constructor(protected readonly http: F1Api) {
         //
     }
+
+    public abstract toJSON(): unknown;
 }

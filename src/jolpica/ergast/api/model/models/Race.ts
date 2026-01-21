@@ -1,10 +1,27 @@
 import type { RaceApiData, ResultOptions } from '../../../types';
 import type { F1Api } from '../F1Api';
 import type { PendingRequest } from '../PendingRequest';
-import { Circuit } from './Circuit';
+import { Circuit, type CircuitJson } from './Circuit';
 import { Model } from './Model';
 import type { Result } from './Result';
-import { SessionDateTime } from './SessionDateTime';
+import { SessionDateTime, type SessionDateTimeJSON } from './SessionDateTime';
+
+export interface RaceJSON {
+    season: number;
+    round: number;
+    wikiUrl: string | null;
+    name: string;
+    circuit: CircuitJson;
+    date: string;
+    time: string | null;
+    firstPractice: SessionDateTimeJSON | null;
+    secondPractice: SessionDateTimeJSON | null;
+    thirdPractice: SessionDateTimeJSON | null;
+    qualifying: SessionDateTimeJSON | null;
+    sprint: SessionDateTimeJSON | null;
+    sprintQualifying: SessionDateTimeJSON | null;
+    sprintShootout: SessionDateTimeJSON | null;
+}
 
 export class Race extends Model {
     public readonly season: number;
@@ -92,6 +109,25 @@ export class Race extends Model {
 
     public results(options?: Omit<ResultOptions, 'season' | 'round'>): PendingRequest<Result[]> {
         return this.http.results(this.getOptions(options));
+    }
+
+    public override toJSON(): RaceJSON {
+        return {
+            season: this.season,
+            round: this.round,
+            wikiUrl: this.wikiUrl,
+            name: this.name,
+            circuit: this.circuit.toJSON(),
+            date: this.date,
+            time: this.time,
+            firstPractice: this.firstPractice?.toJSON() ?? null,
+            secondPractice: this.secondPractice?.toJSON() ?? null,
+            thirdPractice: this.thirdPractice?.toJSON() ?? null,
+            qualifying: this.qualifying?.toJSON() ?? null,
+            sprint: this.sprint?.toJSON() ?? null,
+            sprintQualifying: this.sprintQualifying?.toJSON() ?? null,
+            sprintShootout: this.sprintShootout?.toJSON() ?? null,
+        };
     }
 
     protected getOptions<T>(options: T): T & { season: number; round: number } {

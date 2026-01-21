@@ -1,7 +1,16 @@
 import type { PitStopApiData, RaceApiData } from '../../../types';
 import type { F1Api } from '../F1Api';
 import { Model } from './Model';
-import { Race } from './Race';
+import { Race, type RaceJSON } from './Race';
+
+export interface PitStopJSON {
+    driverId: string;
+    lap: number | null;
+    stop: number | null;
+    time: string | null;
+    duration: number | null;
+    race: RaceJSON;
+}
 
 export class PitStop extends Model {
     public readonly driverId: string;
@@ -20,5 +29,16 @@ export class PitStop extends Model {
         this.time = data.time ?? null;
         this.duration = data.duration !== undefined ? Number(data.duration) : null;
         this.race = new Race(raceData, this.http);
+    }
+
+    public override toJSON(): PitStopJSON {
+        return {
+            driverId: this.driverId,
+            lap: this.lap,
+            stop: this.stop,
+            time: this.time,
+            duration: this.duration,
+            race: this.race.toJSON(),
+        };
     }
 }

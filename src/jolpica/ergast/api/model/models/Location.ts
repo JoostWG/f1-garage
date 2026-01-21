@@ -2,6 +2,13 @@ import type { LocationApiData } from '../../../types';
 import type { F1Api } from '../F1Api';
 import { Model } from './Model';
 
+export interface LocationJson {
+    latitude: number;
+    longitude: number;
+    locality: string;
+    country: string;
+}
+
 export class Location extends Model {
     public readonly latitude: number;
     public readonly longitude: number;
@@ -34,5 +41,14 @@ export class Location extends Model {
     ): `https://maps.apple.com/frame?center=${number}%2C${number}&span=${number}%2C${number}` {
         // dprint-ignore
         return `https://maps.apple.com/frame?center=${this.latitude}%2C${this.longitude}&span=${span[0]}%2C${span[1]}`;
+    }
+
+    public override toJSON(): LocationJson {
+        return {
+            latitude: this.latitude,
+            longitude: this.longitude,
+            locality: this.locality,
+            country: this.country,
+        };
     }
 }

@@ -3,6 +3,12 @@ import type { StatusApiData } from '../../../types';
 import type { F1Api } from '../F1Api';
 import { Model } from './Model';
 
+export interface StatusJSON {
+    id: StatusType;
+    count: number;
+    name: string;
+}
+
 export class Status extends Model {
     public readonly id: StatusType;
     public readonly count: number;
@@ -14,5 +20,13 @@ export class Status extends Model {
         this.id = data.statusId;
         this.count = Number(data.count);
         this.name = data.status;
+    }
+
+    public override toJSON(): StatusJSON {
+        return {
+            id: this.id,
+            count: this.count,
+            name: this.name,
+        };
     }
 }
