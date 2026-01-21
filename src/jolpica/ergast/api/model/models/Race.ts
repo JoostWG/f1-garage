@@ -62,6 +62,13 @@ export class Race extends Model {
             : null;
     }
 
+    /**
+     * Get the year and the name
+     */
+    public get fullName(): string {
+        return `${this.season} ${this.name}`;
+    }
+
     public get dateTime(): Date {
         return new Date(this.time !== null ? `${this.date}T${this.time}` : this.date);
     }
