@@ -41,3 +41,11 @@ export interface EndpointsMap {
     team_radio: TeamRadioApiData;
     weather: WeatherApiData;
 }
+
+export type WhereOperator = '=' | '>=' | '<=';
+
+export interface WhereClause<T = unknown> {
+    field: string;
+    operator: WhereOperator;
+    value: T;
+}
